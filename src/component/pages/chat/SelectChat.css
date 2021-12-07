@@ -1,0 +1,66 @@
+.selectChat-page{
+    padding:100px 0px;
+}
+.selectChat-page .container{
+    width: 500px;
+    margin:0 auto;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.342);
+}
+
+.selectChat-page .container .selecter{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.selectChat-page .container .notRead{
+    background-color: #f477ff5e;
+}
+
+.selectChat-page .container .selecter img{
+    width: 80px;
+    border-radius: 50px;
+    border:1px solid rgba(0, 0, 0, 0.199);
+    float: left;
+}
+.selectChat-page .container .selecter .chat-info{
+    float: left;
+    padding:0px 10px;
+    max-height: 70px;
+    width: 400px;
+    overflow: hidden;
+}
+.selectChat-page .container .selecter .chat-info h2{
+    float: left;
+}
+.selectChat-page .container .selecter .chat-info h4{
+    float: right;
+}
+.selectChat-page .container .selecter .chat-info h5{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+@media screen and (max-width:600px) {
+    .selectChat-page .container{
+        width: 300px;
+    }
+    .selectChat-page .container .selecter img{
+        width: 50px;
+    }
+    .selectChat-page .container .selecter .chat-info{
+        width: 80%;
+        max-height: 50px;
+    }
+
+    .selectChat-page .container .selecter .chat-info h2{
+        font-size: 18px;
+    }
+    .selectChat-page .container .selecter .chat-info h4{
+        font-size: 15px;
+    }
+    .selectChat-page .container .selecter .chat-info h5{
+        margin-top: 0px;
+        font-size: 13px;
+    }
+}
