@@ -6,7 +6,7 @@ import Image2 from "../../images/147190.jpg"
 import "./SelectChat.css"
 
 function SelectChat(props) {
-    const { id, newMessage } = props
+    const { id, newMessage, openModal } = props
     const [chatList, setChatList] = useState([])
     const [today, setToday] = useState('')
     const history = useHistory()
@@ -65,7 +65,7 @@ function SelectChat(props) {
                     } else {
                         return (
                             <div key={index} className="selecter"
-                                onClick={() => { goChat(data.rId, data.rName, data.category) }}>
+                                onClick={() => { goChat(data.rId, data.rName, data.category); openModal(); }}>
                                 {data.category === "純男" ?
                                     <img src={Image1} alt="" />
                                     :

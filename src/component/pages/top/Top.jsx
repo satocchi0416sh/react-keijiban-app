@@ -1,6 +1,5 @@
 import { Close } from "@mui/icons-material"
 import { Alert, AlertTitle, Collapse, IconButton, Typography } from "@mui/material"
-import { Box } from "@mui/system"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./Top.css"

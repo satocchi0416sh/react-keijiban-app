@@ -13,6 +13,10 @@ import Chat from './component/pages/chat/chat';
 import SelectChat from './component/pages/chat/SelectChat';
 import Profile from './component/pages/profile/Profile';
 import Area from './component/pages/top/Area';
+import { Modal, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+
+import { Rect } from './ads/Ads';
 
 const socket = io('https://dark-tanushimaru-0706.lolipop.io')
 function App() {
@@ -91,19 +95,27 @@ function App() {
       realDate: realDate
     })
   }
+  const [open, setOpen] = useState(false);
+  const modalHandleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
   return (
     <div className="App">
 
       <BrowserRouter>
-        <Header isLoggedIn={isLoggedIn} id={id} name={name} logout={logout} />
+        <Header isLoggedIn={isLoggedIn} id={id} name={name} logout={logout} openModal={modalHandleOpen} />
         <Switch>
           <Route exact path="/">
             <Top id={id} username={name} category={category} />
           </Route>
 
           <Route path="/area/:area">
-            <Area id={id} username={name} category={category} />
+            <Area id={id} username={name} category={category} openModal={modalHandleOpen} />
           </Route>
 
           <Route path="/signup">
@@ -119,11 +131,11 @@ function App() {
           </Route>
 
           <Route path="/appload/:id">
-            <Appload id={id} area={area} />
+            <Appload id={id} area={area} openModal={modalHandleOpen} />
           </Route>
 
           <Route path="/selectChat/:id">
-            <SelectChat id={id} newMessage={newMessage} />
+            <SelectChat id={id} newMessage={newMessage} openModal={modalHandleOpen} />
           </Route>
 
           <Route path="/chat/:rId">
@@ -132,7 +144,36 @@ function App() {
 
         </Switch>
       </BrowserRouter>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box >
+          {/* 広告を挿入 */}
+          {(() => {
 
+            const i = getRandomInt(Rect.length)
+            return (
+              <a href={Rect[i].url}>
+                <img
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: "500px",
+                  }}
+                  src={Rect[i].img}
+                  alt="ad" />
+              </a>
+            )
+
+          })()}
+
+        </Box>
+      </Modal>
     </div>
   );
 }

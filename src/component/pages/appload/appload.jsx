@@ -5,7 +5,7 @@ import Image1 from "../../images/135683.png"
 import Axios from "axios"
 import "./appload.css"
 const Appload = memo((props) => {
-    const { id, area } = props
+    const { id, area, openModal } = props
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
     const [image, setImage] = useState(null)
@@ -128,7 +128,7 @@ const Appload = memo((props) => {
             })
         })
         setApploaded(true)
-
+        openModal();
     }
 
     return (

@@ -22,7 +22,7 @@ const Header = memo((props) => {
         p: 4,
     };
 
-    const { isLoggedIn, id, logout } = props
+    const { isLoggedIn, id, logout, openModal } = props
     console.log(isLoggedIn)
     const history = useHistory()
 
@@ -56,6 +56,7 @@ const Header = memo((props) => {
                     onClick={() => {
                         setDrawerOpen(false)
                         history.push("/")
+                        openModal()
                     }}
                 >
                     <ListItemIcon>
@@ -67,6 +68,7 @@ const Header = memo((props) => {
                     onClick={() => {
                         setDrawerOpen(false)
                         history.push(`/selectChat/${id}`)
+                        openModal()
                     }}
                 >
                     <ListItemIcon>
@@ -78,8 +80,7 @@ const Header = memo((props) => {
                     onClick=
                     {() => {
                         handleClick()
-                    }
-                    }
+                    }}
                 >
                     <ListItemIcon>
                         <AccountCircle />
@@ -127,6 +128,7 @@ const Header = memo((props) => {
                     onClick={() => {
                         setDrawerOpen(false)
                         history.push("/")
+                        openModal();
                     }}
                 >
                     <ListItemIcon>
@@ -175,7 +177,7 @@ const Header = memo((props) => {
                     </Typography>
                     <Stack spacing={2} direction="row" sx={{ mt: 2, justifyContent: "center" }}>
                         <Button variant="contained" onClick={() => { setLogoutModal(false) }}>キャンセル</Button>
-                        <Button variant="outlined" onClick={() => { setLogoutModal(false); logout(); }}>はい</Button>
+                        <Button variant="outlined" onClick={() => { setLogoutModal(false); logout(); history.push("/"); openModal(); }}>はい</Button>
                     </Stack>
                 </Box>
             </Modal>
@@ -187,7 +189,7 @@ const Header = memo((props) => {
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 <Tooltip title="トップ" arrow>
                                     <IconButton size="large" aria-label="show 4 new mails" color="inherit"
-                                        onClick={() => { history.push("/") }}>
+                                        onClick={() => { history.push("/"); openModal(); }}>
                                         <Home />
                                     </IconButton>
                                 </Tooltip>
@@ -196,7 +198,7 @@ const Header = memo((props) => {
                                         size="large"
                                         aria-label="show 17 new notifications"
                                         color="inherit"
-                                        onClick={() => { history.push(`/selectChat/${id}`) }}
+                                        onClick={() => { history.push(`/selectChat/${id}`); }}
                                     >
                                         <Badge badgeContent={0} color="error">
                                             <Chat />
@@ -263,7 +265,7 @@ const Header = memo((props) => {
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 <Tooltip title="トップ" arrow>
                                     <IconButton size="large" aria-label="show 4 new mails" color="inherit"
-                                        onClick={() => { history.push("/") }}>
+                                        onClick={() => { history.push("/"); openModal(); }}>
                                         <Home />
                                     </IconButton>
                                 </Tooltip>
@@ -282,7 +284,7 @@ const Header = memo((props) => {
                                         size="large"
                                         aria-label="show 17 new notifications"
                                         color="inherit"
-                                        onClick={() => { history.push("signup") }}
+                                        onClick={() => { history.push("/signup") }}
                                     >
                                         <AddCircleOutline />
                                     </IconButton>

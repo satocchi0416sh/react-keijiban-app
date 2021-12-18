@@ -47,6 +47,18 @@
   color: #99173c;
 }
 
+.fade {
+  animation: fadeIn 20s ease 0.3s 1 normal;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .top-page .container button {
     width: 100%;
@@ -64,6 +76,10 @@
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+  }
+  .img {
+    display: flex;
+    margin: 0 auto;
   }
 }
 
